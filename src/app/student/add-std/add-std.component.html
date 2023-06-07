@@ -1,0 +1,12 @@
+
+<div class="form-group-row">
+    <div class="col-sm-12">
+        <input type="text" class="form-control" [(ngModel)]="studentname" placeholder="name"><br>
+        <input type="text" class="form-control" [(ngModel)]="studentage" placeholder="age"><br>
+        <input type="text" class="form-control" [(ngModel)]="studentplace" placeholder="place"><br>
+    </div>
+    <div class="modal-footer">
+        <button type="button" (click)="savestudent()" *ngIf="std.studentid==0" class="btn btn-info">Save</button>
+        <button type="button" (click)="updatestudent()" *ngIf="std.studentid!==0" class="btn btn-danger">Update</button>
+      </div>
+</div>

@@ -1,0 +1,82 @@
+<!-- Button trigger modal -->
+<button type="button" (click)="addclick()" data-backdrop="static"
+ data-keyboard="false" class="btn btn-info btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Student
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{ModalTitle}}</h1>
+          <button type="button" (click)="closeclick()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <app-add-std [std]="std" *ngIf="ActiveAddEditComp"></app-add-std>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" (click)="savestudent()" *ngIf="std.studentid"  class="btn btn-info">Save</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+<div>
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+                <th>stdent id</th>
+                <th>stdent name</th>
+                <th>stdent age</th>
+                <th>stdent place</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of Studentlist">
+                <td>{{i.studentid}}</td>
+                <td>{{i.studentname}}</td>
+                <td>{{i.studentage}}</td>
+                <td>{{i.studentplace}}</td>
+                <td>
+                    <button class="btn btn-outline-success"  (click)="editcilck(i)" data-backdrop="static"
+ data-keyboard="false"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger"(click)="deleteclick(i)" >Delete</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+
+<style>
+  .btn1{
+    display: inline-block;
+    margin-top: 10px;
+            padding: 12px 28px;
+            background: #0ef;
+            border-radius: 40px;
+            box-shadow: 0 0 10px #0ef;
+            font-size: 16px;
+            color: #1f242d;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0;
+             animation: slideTop 1s ease forwards;
+            animation-delay: 2s;
+  }
+
+            @keyframes slideTop{
+            0%{
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateX(0);
+                opacity: 1;
+            }
+  }
+</style>
